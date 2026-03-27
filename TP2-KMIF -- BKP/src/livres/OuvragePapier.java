@@ -1,12 +1,9 @@
 package livres;
 
 public class OuvragePapier extends Ouvrage{
-    public int nombreDePages;
-    public OuvragePapier(String titre, Auteur auteur) {
+    public int NbPages;
+    public OuvragePapier(String titre, Auteur auteur, int NbPages) {
         super(titre, auteur);
-    }
-
-    public int getNombreDePages() {
-        return nombreDePages;
+        this.NbPages=NbPages;
     }
 }
