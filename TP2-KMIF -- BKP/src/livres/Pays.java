@@ -26,7 +26,7 @@ public class Pays {
     }
 
     public void setCodePays(String codePays) {
-        this.codePays = codePays;
+        validerCodePays(codePays);
     }
 
     public String getNom() {

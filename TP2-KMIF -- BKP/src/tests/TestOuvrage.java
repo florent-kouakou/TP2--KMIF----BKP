@@ -5,6 +5,7 @@ import java.util.List;
 
 import livres.Ouvrage;
 import livres.Auteur;
+import livres.Pays;
 
 /**
  * CoursPOO 1
@@ -21,10 +22,17 @@ public class TestOuvrage {
     }
 
 
+
+
     public void testOuvrages() {
         //Deux auteurs deja prets pour les tests...
-        Auteur albertine = new Auteur("Albertine", "Tremblay", "Canada");
-        Auteur john = new Auteur("John", "Smith", "Etats-Unis");
+
+        Pays Canada = new Pays("Can123", "Canada");
+        Pays USA = new Pays("USA123", "États-Unis d'Amérique");
+        Pays France = new Pays("FRA1234", "France");
+
+        Auteur albertine = new Auteur("Albertine", "Tremblay", Canada);
+        Auteur john = new Auteur("John", "Smith", USA);
 
         //Voici une partie des tests! Il faut en ajouter, pour les fonctionnalités non testées!
         System.out.println("-----Test des constructeurs d'ouvrage et des diverses validations-----------");
@@ -57,7 +65,7 @@ public class TestOuvrage {
 
         System.out.println("\n-----Tests des méthodes acheter et vendre-----------");
 
-        Ouvrage livre3 = new Ouvrage("Musique du hasard", new Auteur("Paul", "Auster", "Etats-Unis"), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
+        Ouvrage livre3 = new Ouvrage("Musique du hasard", new Auteur("Paul", "Auster", USA), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
         System.out.println(livre3);
 
         livre3.acheter(5);
@@ -69,14 +77,14 @@ public class TestOuvrage {
         System.out.println("On peut vendre 10 livres? " + livre3.vendre(10));
         System.out.println(livre3);
 
-        Ouvrage livre4 = new Ouvrage("Test", new Auteur("A", "B", "Etats-Unis"), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
+        Ouvrage livre4 = new Ouvrage("Test", new Auteur("A", "B", USA), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
 
         System.out.println("\n-----Tests de la  méthode equals()-----------");
         //Deux ouvrages égaux
-        Ouvrage livre5 = new Ouvrage("Test", new Auteur("A", "B", "Etats-Unis"), Ouvrage.Format.PAPIER, null, 5);
-        Ouvrage livre6 = new Ouvrage("Test", new Auteur("A", "B", "Etats-Unis"), Ouvrage.Format.PAPIER, LocalDate.now(), 10);
+        Ouvrage livre5 = new Ouvrage("Test", new Auteur("A", "B", USA), Ouvrage.Format.PAPIER, null, 5);
+        Ouvrage livre6 = new Ouvrage("Test", new Auteur("A", "B", USA), Ouvrage.Format.PAPIER, LocalDate.now(), 10);
         //Un qui ne l'est pas
-        Ouvrage livre7 = new Ouvrage("Test", new Auteur("Z", "B", "Etats-Unis"), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
+        Ouvrage livre7 = new Ouvrage("Test", new Auteur("Z", "B", USA), Ouvrage.Format.PAPIER, LocalDate.now(), 5);
 
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre5));
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + livre4.equals(livre6));
@@ -90,15 +98,17 @@ public class TestOuvrage {
     private void testTrouver() {
         Librairie bibliotheque = new Librairie();
         Auteur john = bibliotheque.getAuteurs().get(1);
+        Pays Canada = new Pays("CAN123", "Canada");
+        Pays France = new Pays("FRA1234", "France");
 
         System.out.println("\n-----Test de votre méthode trouverOuvrage-----------");
-        List<Ouvrage> resultat = bibliotheque.trouverOuvrages(new Auteur("Albertine", "Tremblay", "Canada"));
+        List<Ouvrage> resultat = bibliotheque.trouverOuvrages(new Auteur("Albertine", "Tremblay", Canada));
         System.out.println("Livres de albertine: " + resultat);
 
         resultat = bibliotheque.trouverOuvrages(john);
         System.out.println("Livres de john: " + resultat);
 
-        resultat = bibliotheque.trouverOuvrages(new Auteur("Jacques", "Beaulieu", "France"));
+        resultat = bibliotheque.trouverOuvrages(new Auteur("Jacques", "Beaulieu", France));
         System.out.println("Livres de Jacques: " + resultat);
     }
 
