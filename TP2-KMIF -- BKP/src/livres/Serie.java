@@ -8,8 +8,18 @@ public class Serie {
     private String nom;
 
     List<String> livres = new ArrayList<>();
+    List<String> series=new ArrayList<>();
 
+    public void ajouterSerie (String Serie){
+        series.add(Serie);
+    }
+    public void supprimerSerie(String Series){
+        series.remove(Series);
+    }
 
+    public String getNom() {
+        return nom;
+    }
 
     public Serie(String nom) {
         this.nom = nom;
