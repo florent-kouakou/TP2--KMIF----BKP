@@ -1,10 +1,13 @@
 package tests;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import livres.Ouvrage;
 import livres.Auteur;
+import livres.Serie;
 
 /**
  * CoursPOO 1
@@ -18,6 +21,24 @@ public class TestOuvrage {
         TestOuvrage test = new TestOuvrage();
         test.testOuvrages();
         test.testTrouver();
+    }
+
+    public void testSerie() {
+        List<Serie> series = new ArrayList<>();
+        Serie serie = new Serie("Harry Potter");
+        Serie serie2 = new Serie("Le Meridien de Sang");
+        series.add(serie);
+        series.add(serie2);
+        Iterator<Serie> it = series.iterator();
+        while (it.hasNext()) {
+
+
+            System.out.println(it.next());
+            series.remove(serie2);
+
+        }
+
+
     }
 
 
@@ -84,6 +105,7 @@ public class TestOuvrage {
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + !livre4.equals(john));
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + !livre4.equals(null));
         System.out.println("Test de la méthode equals d'bibliotheque.Ouvrage:" + !livre4.equals("Test"));
+
     }
 
 
